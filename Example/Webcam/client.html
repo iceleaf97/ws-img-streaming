@@ -1,0 +1,22 @@
+<html>
+<head>
+    <title>Client</title>
+</head>
+<body>
+    <img id="image">
+    <script>
+        
+        const WS_URL = 'ws://127.0.0.1:8080';
+        
+        const ws = new WebSocket(WS_URL);
+        ws.onopen = () => {
+            console.log(`Connected to ${WS_URL}`);
+        }
+        ws.onmessage = (event) =>{
+            console.log(event);
+            const imageElm = document.getElementById('image');
+            imageElm.src = `${event.data}`;
+        }
+    </script>
+</body>
+</html>
